@@ -26,14 +26,14 @@ public class CategoryServiceImpl implements CategoryService {
 
     private CategoryResponse convertToResponse(CategoryEntity newCategory) {
         return CategoryResponse.builder()
-                .categoryId(newCategory.getCategoryId())
+                .category(newCategory.getCategoryId())
                 .name(newCategory.getName())
                 .description(newCategory.getDescription())
                 .bgColor(newCategory.getBgColor())
                 .imgUrl(newCategory.getImgUrl())
                 .createAt(newCategory.getCreateAt())
-                .updateArt(newCategory.getUpdateAt())
-                .build()
+                .updateAt(newCategory.getUpdateAt())
+                .build();
     }
 
     private CategoryEntity convertToEntity(CategoryRequest request) {

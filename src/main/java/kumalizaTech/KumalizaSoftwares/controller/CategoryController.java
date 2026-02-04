@@ -3,16 +3,22 @@ package kumalizaTech.KumalizaSoftwares.controller;
 
 import kumalizaTech.KumalizaSoftwares.io.CategoryRequest;
 import kumalizaTech.KumalizaSoftwares.io.CategoryResponse;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import kumalizaTech.KumalizaSoftwares.service.CategoryService;
+import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/categories")
+@RequiredArgsConstructor
 
 public class CategoryController {
 
-    public CategoryResponse addCategory(@RequestBody CategoryRequest request){
+    private final CategoryService categoryService;
 
+    @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
+    public CategoryResponse addCategory(@RequestBody CategoryRequest request){
+        return categoryService.add(request);
     }
 }
